@@ -1,0 +1,53 @@
+.heading-div{
+  position: relative;
+  right: 423px;
+    font-family: monospace;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.main-div{
+   font-family: monospace;
+}
+.current-field-list{
+    margin-left: 256px;
+    padding: 27px;
+    font-size: 18px;
+    border: 3px solid #000000;
+    text-align: -webkit-auto;
+    margin-right: 34px;
+}
+.col-md-6{
+    margin-left: -900px;
+    padding: 27px;
+    font-size: 18px;
+    border: 3px solid #000000;
+}
+.toogle-div{
+  padding-right: 41px;
+  padding-left:1480px;
+  position: relative;
+  top: -160px;
+  right: 45px;
+  bottom:60px;
+
+}
+.edit-button-div{
+  offset-distance: inherit;
+   position: relative;
+    left: 676px;
+  bottom: 69px;
+  padding-right: -10px;
+}
+.edit-button{
+  background-color: #4CAF50;
+}
+.common{
+  
+}
+.body{
+  overflow-x: hidden;
+}
