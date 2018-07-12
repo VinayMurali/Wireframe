@@ -4,6 +4,8 @@ import './App.css';
 import Sidebar from './components/Sidebar/Sidebar';
 import Booking from './components/Booking/Booking';
 
+/* json-server --watch db.json */
+
 class App extends Component {
   render() {
     return (

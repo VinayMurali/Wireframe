@@ -2,48 +2,11 @@ import React, { Component } from 'react';
 import './Tickets.css';
 import "react-toggle/style.css"
 import Toggle from 'react-toggle'
-import  Form from '../Form/Form';
-import  FormA from '../Form/FormA';
-
-export const  UserData=[
-    {
-      "id":"1",
-      "fieldName":"Redmi Note 4",
-      "description":"8GB RAM",
-      "uiType":"Box",
-      "uiTypeOptions":"None"
-    },
-    {
-      "id":"2",
-      "fieldName":"Asus",
-      "description":"4 GB Ram",
-      "uiType":"Radio",
-      "uiTypeOptions":"None"
-    },{
-      "id":"3",
-      "fieldName":"Samsung",
-      "description":"Samsung S3",
-      "uiType":"CheckBox",
-      "uiTypeOptions":"Radio"
-    },{
-      "id":"4",
-      "fieldName":"Huawei",
-      "description":"Honor 7x Blue",
-      "uiType":"DropDown",
-      "uiTypeOptions":"None"
-    },
-    {
-      "id":"5",
-      "fieldName":"Nokia",
-      "description":"Nokia 7x Blue",
-      "uiType":"Display",
-      "uiTypeOptions":"None"
-    },  
-  ]
-
+import  EditForm from '../EditForm/EditForm';
+import request from 'superagent';
 
 class Tickets extends Component {
-  
+
       constructor(props){
       super(props)
       this.state={
@@ -56,76 +19,107 @@ class Tickets extends Component {
           uiTypeOptions:'none',
           list:[],
           editIdNo:'',
-          fnValue:''
+          fnValue:'',
+          value:'',
+          tickets:null,
+          id:''
       };
       this.handleEdit=this.handleEdit.bind(this);
       this.handleFormSubmit= this.handleFormSubmit.bind(this);
-  
+      this.fetchTickets= this.fetchTickets.bind(this);
+
+    }
+    componentDidMount(){
+      this.fetchTickets();
+      console.log("componentDidMount",this.state.tickets)
+    }
+    fetchTickets(){
+      request
+        .get('http://localhost:3000/userData/')
+        .then(res=>res.body)
+        .then(
+          (result)=>{
+            console.log('inside result of cDidm',result);
+              this.setState({tickets:result});
+              }
+          )
+        .catch(function(err){
+          console.log('error in request',err)
+        })
     }
 
  handleEdit = (id)=>{
-        //console.log("json edit no",id)   
+        console.log("json edit no",id)
+
           return(
                   this.setState({showForm:true,view:'form',editIdNo:id})
               )
+
   }
 
   handleFormSubmit(formObj){
-    console.log(formObj)
+    console.log('formObj:',formObj)
     this.setState({
         'fieldName':formObj.fieldName,
         'description':formObj.description,
         'showForm':true,
         'uiTypeOptions':formObj.uiTypeOptions,
         'uiType':formObj.uiType,
-        'view':''
+        view:'ticket'
        })
 };
-  
+
 
   render() {
+    console.log("Render",this.state.tickets)
      return (
-       UserData.map(item=>{ 
-        // console.log(item.id,  this.state.editIdNo,this.state.view)
-        // console.log(item)
-      return (<div className="main-div">
-                <div className="current-field-list">
-                 <form>
-                        <label className="common" onChange={this.formMethod}>
-                           Field Name:{item.fieldName}
-                        </label><br />
-                        <label className="common">
-                           Description:{item.description}
-                        </label><br />
-                        <label className="common">
-                           UI Type Options:{item.uiTypeOptions}
-                        </label><br />
-                         <label className="common">
-                           UI Type:{item.uiType}
-                        </label><br />
-                      </form>
-                </div>
-                <div className="toogle-div">
-                   enable
-                      <Toggle
-                          defaultChecked={true}
-                          onChange={()=>{console.log("Toggle")}}
-                        />disable
-                </div>
-                <div className="edit-button-div">
-                    <button className="edit-button" onClick={() => this.handleEdit(item.id)}>Edit</button>
-                </div>
-                {
-                this.state.view==='form' && this.state.editIdNo===item.id &&
-                <Form onSubmitFunc={this.handleFormSubmit}  method='POST' value={item} />
-              } 
-            </div>
-        )//sub return
-      })//map
+      <div className="main-div">
+          <div className="current-field-list">
+              {this.state.tickets && this.state.tickets.map((item)=>{
+                {console.log("item from map:",item)}
+              return (
+                    <div className="form-div">
 
-      );//main
-     
-  }
-}
+                           <div className="toogle-div">
+                               enable
+                                     <Toggle
+                                         defaultChecked={true}
+                                         onChange={()=>{console.log("Toggle")}}
+                                       />disable
+                           </div>
+                               <label className="common" >
+                                  Field Name:{item.fieldName}
+                               </label><br />
+                               <label className="common">
+                                  Description:{item.description}
+                               </label><br />
+                               <label className="common">
+                                  UI Type Options:{item.uiTypeOptions}
+                               </label><br />
+                                <label className="common">
+                                  UI Type:{item.uiType}
+                               </label><br />
+
+                               <div className="edit-button-div">
+                                   <button className="edit-button" onClick={() => this.handleEdit(item.id)}>Edit</button>
+                               </div>
+
+                                {console.log('view:',this.state.view)}
+                                {
+                               this.state.view==='form' && this.state.editIdNo===item.id &&
+                                <EditForm onSubmitFunc={this.handleFormSubmit} display={this.fetch} method='POST' value={item} />
+                             }
+                          </div>
+                      )
+                    })
+                   }
+               </div>
+
+
+             {this.state.view === 'ticket'?<Tickets />:''}
+          </div>
+        )}
+      }
+
 
 export default Tickets;

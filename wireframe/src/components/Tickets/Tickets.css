@@ -19,6 +19,8 @@
     border: 3px solid #000000;
     text-align: -webkit-auto;
     margin-right: 34px;
+    width: 82%;
+    float: left;
 }
 .col-md-6{
     margin-left: -900px;
@@ -27,27 +29,33 @@
     border: 3px solid #000000;
 }
 .toogle-div{
-  padding-right: 41px;
-  padding-left:1480px;
-  position: relative;
-  top: -160px;
-  right: 45px;
+
+
+  text-align: right;
+
   bottom:60px;
 
 }
 .edit-button-div{
-  offset-distance: inherit;
-   position: relative;
-    left: 676px;
-  bottom: 69px;
-  padding-right: -10px;
-}
+
+    position: relative;
+    left: 1021px;
+    bottom: -2px;
+  }
 .edit-button{
   background-color: #4CAF50;
 }
 .common{
-  
+
 }
 .body{
   overflow-x: hidden;
+}
+.form-div{
+  border:1px solid #000;
+  margin-bottom: 25px;
+  padding: 10px;
+  width: 100%;
+  float: left;
+
 }
