@@ -1,5 +1,5 @@
 import React, { Component,Fragment } from 'react';
-import './Form.css';
+import './EditForm.css';
 import Tickets from '../Tickets/Tickets';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import UserData from '../Tickets/Tickets'
@@ -30,7 +30,8 @@ class EditForm extends Component {
       this.uiTypeTextArea=this.uiTypeTextArea.bind(this);
       this.uiTypeRadio=this.uiTypeRadio.bind(this);
       this.uiCheckBox=this.uiCheckBox.bind(this);
-  }
+      this.togglePopup=this.togglePopup.bind(this);
+      }
 
   fieldName=(event)=>{
 
@@ -116,13 +117,17 @@ class EditForm extends Component {
    }
     this.props.onCancelFunc();
   }
-
+  togglePopup() {
+      this.setState({
+        showPopup: !this.state.showPopup
+      });
+    }
 
   render() {
      return (
         <Fragment>
           {
-                      <form className="outer-form" onSubmit={this.handleSubmit}>
+                      <form className="outer-form" onChange={this.togglePopup} onSubmit={this.handleSubmit}>
 
                             <label>
                                 Field Name:

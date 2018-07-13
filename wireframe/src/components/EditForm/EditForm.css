@@ -1,17 +1,11 @@
 .outer-form{
 		font-family: monospace;
-     text-align: left;
-    margin-left: 190px;
-        position: relative;
-    top: -20px;
-    left: 494px;
-    animation: inherit;
-    display: grid;
+     text-align: center;
 }
 .heading {
   	   font-size: 28px;
-  
-     
+
+
 }
 .cancel{
     background-color:#4CAF50;

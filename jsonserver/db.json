@@ -19,31 +19,31 @@
   "userData": [
     {
       "id": "1",
-      "fieldName": "Lenova",
-      "description": "8gb ram",
-      "uiTypeOptions": "windows",
+      "fieldName": "lenova",
+      "description": "8GB RAM",
+      "uiTypeOptions": "windows 8.1",
       "uiType": "input box"
     },
     {
       "id": "2",
-      "fieldName": "HP1",
-      "description": "41 GB Ram",
-      "uiTypeOptions": "whar",
+      "fieldName": "HP",
+      "description": "4 GB Ram",
+      "uiTypeOptions": "None",
       "uiType": "ubuntu"
     },
     {
       "id": "3",
       "fieldName": "samsung",
       "description": "4GB RAM",
-      "uiType": "CheckBox",
-      "uiTypeOptions": "Windwos XP"
+      "uiTypeOptions": "Windwos XP",
+      "uiType": "CheckBox"
     },
     {
       "id": "4",
-      "fieldName": "DELL1",
-      "description": "1TB HDD1",
-      "uiTypeOptions": "Windows 8.11",
-      "uiType": "DropDown"
+      "fieldName": "DELL",
+      "description": "1TB HDD",
+      "uiType": "DropDown",
+      "uiTypeOptions": "Windows 8.1"
     },
     {
       "id": "5",

@@ -29,18 +29,12 @@
     border: 3px solid #000000;
 }
 .toogle-div{
-
-
-  text-align: right;
-
-  bottom:60px;
-
+    text-align: right;
+    bottom:60px;
 }
 .edit-button-div{
-
-    position: relative;
-    left: 1021px;
-    bottom: -2px;
+  padding: 1px;
+  margin-left: 1041px;
   }
 .edit-button{
   background-color: #4CAF50;
